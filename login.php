@@ -25,13 +25,20 @@
 				header("Location: index.php");
 
 			}else{
-
-				echo "password is invalid";
-
+				?>
+				<div style="text-align:center; padding-top: 100px"><?php
+				echo "password is invalid</br>please try again";?>
+				<div style='padding-top: 10px; text-align: center;'>
+				<button><a class="btn btn-secondary" href="./login.php" role="button">back to login</a></button></div></div>
+				<?php
 			}
 		}else{
-
-			echo "id is invalid";
+			?>
+			<div style="text-align:center; padding-top: 100px"><?php
+			echo "id is invalid</br>please try again";?>
+			<div style='padding-top: 10px; text-align: center;'>
+			<button><a class="btn btn-secondary" href="./login.php" role="button">back to login</a></button></div>
+			<?php
 
 		}
 
@@ -42,31 +49,46 @@
 <html>
 <head>
 	<title> login </title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>Signin Template · Bootstrap</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/sign-in/">
+	<link href="/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+	<style>
+		.bd-placeholder-img {
+			font-size: 1.125rem;
+			text-anchor: middle;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+		@media (min-width: 768px) {
+			.bd-placeholder-img-lg {
+			font-size: 3.5rem;
+			}
+		}
+	</style>
+	<!-- Custom styles for this template -->
+	<link href="signin.css" rel="stylesheet">
 </head>
-<body>
-
-	<form name="user_login" method="post" action="./login.php">
-
-		<table>
-			<tr>
-				<th> user id </th>
-				<td> <input type="text" name="user_id"> </td>
-			</tr>
-			<tr>
-				<th> user password </th>
-				<td> <input type="password" name="user_pw"> </td>
-			</tr>
-			<tr>
-				<td>
-				<input type="submit" value="login">
-				<input type="reset" value="cancle">
-				</td>
-			</tr>
-		</table>
-
+<body class="text-center">
+	<form class="form-signin" name="user_login" method="post" action="./login.php">
+		<img class="mb-4" src="/images/ewha.svg" alt="" width="216" height="216">
+		<h1 class="h3 mb-3 font-weight-normal">Ewha Moviegoer</h1>
+		<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+		<label for="inputEmail" class="sr-only">user id</label>
+		<input type="text" name="user_id", class="form-control" placeholder="user id" required autofocus>
+		<label for="inputPassword" class="sr-only">password</label>
+		<input type="password" name="user_pw" class="form-control" placeholder="password" required>
+		<button class="btn btn-lg btn-primary btn-block" type="submit" value="login">Sign in</button>
 	</form>
 </body>
 </html>
+
 
 <?php
 

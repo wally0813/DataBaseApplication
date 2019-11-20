@@ -1,6 +1,6 @@
 <?php @ob_start();
 
-	$conn = mysqli_connect("localhost","root","apmsetup","movieDB");
+	$conn = mysqli_connect("localhost","root","airscope","moviedb");
 
 	$conn->set_charset("utf8");
 
@@ -18,7 +18,7 @@
 
 	}else{
 
-		//echo "connect success!";
+		//echo "connect success!\n";
 		
 	}
 
