@@ -1,97 +1,108 @@
-<?php
-
-	session_start();
-
-	include "config.php";
-
-	if(!isset($_SESSION['user_id'])){
-
-		?>
-		<script>alert("invalid access. Please Login!");</script>
-		<?php
-		header("Location: login.php");
-
-	}else{
-
-		$id = $_SESSION['user_id'];
-?>
-
 <!DOCTYPE html>
 <meta charset="utf-8" />
 <html>
 <head>
-	<title> mypage </title>
-	<style>
-		th, td {
-			border: 1px solid #444444;
-		}
-		table {
-			width: 600px;
-			border: 1px solid #444444;
-			border-collapse: collapse;
-		}
-	</style>
+   <title> mypage </title>
+   <link rel="stylesheet" href="css/bootstrap.css">
+   <style>
+      th, td {
+         border: 1px solid #444444;
+      }
+      table {
+         width: 600px;
+         border: 1px solid #444444;
+         border-collapse: collapse;
+      }
+      hr.line{
+         width:1000px;
+         border-bottom:0px;
+         text-align:left;
+         margin-left:0px;
+         margin-top: 50px;
+         border: thin solid rgb(201, 201, 201);
+      }
+   </style>
 </head>
-<body>
-	<font color=white><h1 style='background-color:green; padding-left: 10px;'> 마이페이지 <?php echo $id ?> </h1></font>
-	<h2 style='padding-left:10px'> 내 정보 </h2>
 
 <?php
 
-	$query_info = "SELECT * FROM user_info WHERE user_id='$id'";
+   session_start();
 
-	$result = $conn->query($query_info);
+   include "config.php";
 
-	while($row = $result->fetch_array(MYSQLI_ASSOC)){
+   if(!isset($_SESSION['user_id'])){
 
-		$genre_idx = $row['genre_idx'];
+      ?>
+      <script>alert("invalid access. Please Login!");</script>
+      <?php
+      header("Location: login.php");
 
-		$query_idx = "SELECT genre FROM movie_genre WHERE genre_idx='$genre_idx'";
-		$result_idx = $conn->query($query_idx);
-		$row_idx = $result_idx->fetch_array(MYSQLI_ASSOC);
-		?>
-		<table>
-		<tr>
-		<td width=120 style='background-color:#009900; text-align:center'> <?php
-		echo "<b>사용자 아이디</b></td><td style='padding-left: 9px'>" . $row['user_id']; ?> </td></tr> <tr><td style='background-color:#009900; text-align:center'><?php 
-		echo "<b>좋아하는 장르</b></td><td style='padding-left: 9px'>" . $row_idx['genre']; ?> </td></tr> <tr><td style='background-color:#009900; text-align:center'><?php 
-		echo "<b>생년월일</b></td><td style='padding-left: 9px'>" . $row['birth']; ?> </td></tr> <tr><td style='background-color:#009900; text-align:center'><?php 
-		echo "<b>성별</b></td><td style='padding-left: 9px'>" . $row['gender']; ?> </td></tr> <tr><td style='background-color:#009900; text-align:center'><?php 
-		echo "<b>이메일 주소</b></td><td style='padding-left: 9px'>" . $row['email']; ?> </td> </tr></table><?php 
+   }else{
 
-	}
+      $id = $_SESSION['user_id'];
 ?>
 
-<div style='padding-top: 5px; padding-left: 457px;'>
-	<button><a class="btn btn-secondary" href="./changeinfo.php" role="button">change info</a></button>
-	<button><a class="btn btn-secondary" href="./logout.php" role="button">logout</a></button>
-</div>
 
-	<h2 style='padding-left:10px; margin-bottom:-5px'> MY REVIEW </h2>
+<body bgcolor = "#f2f0ed" style="margin-bottom:100px; padding-left:30px;">
+   <font color="#1b3c33"><h1 style='background-color:white; padding-top:10px;padding-bottom:20px;padding-left: 10px; margin-right:500px;'>마이 페이지 <?php echo $id; ?> </h1></font>
+   <h2 style='color:#1b3c33; padding-left:10px;'> 회원 정보 </h2>
 
 <?php
 
-	$query_info = "SELECT * FROM user_review WHERE user_id='$id'";
+   $query_info = "SELECT * FROM user_info WHERE user_id='$id'";
 
-	$result = $conn->query($query_info);
+   $result = $conn->query($query_info);
 
-	while($row = $result->fetch_array(MYSQLI_ASSOC)){
+   while($row = $result->fetch_array(MYSQLI_ASSOC)){
+
+      $genre_idx = $row['genre_idx'];
+
+      $query_idx = "SELECT genre FROM movie_genre WHERE genre_idx='$genre_idx'";
+      $result_idx = $conn->query($query_idx);
+      $row_idx = $result_idx->fetch_array(MYSQLI_ASSOC);
+      ?>
+      <table width="550" height="300"  style="background-color:#f7f0e4; border:solid 5px #1b3c33;">
+      <tr>
+      <td width=120 style='color:#f7f0e4; background-color:#1b3c33; text-align:center'> <?php
+      echo "<b>사용자 아이디</b></td><td style='padding-left: 9px'>" . $row['user_id']; ?> </td></tr> <tr><td style='color:#f7f0e4;background-color:#1b3c33; text-align:center'><?php 
+      echo "<b>좋아하는 장르</b></td><td style='padding-left: 9px'>" . $row_idx['genre']; ?> </td></tr> <tr><td style='color:#f7f0e4;background-color:#1b3c33; text-align:center'><?php 
+      echo "<b>생년월일</b></td><td style='padding-left: 9px'>" . $row['birth']; ?> </td></tr> <tr><td style='color:#f7f0e4;background-color:#1b3c33; text-align:center'><?php 
+      echo "<b>성별</b></td><td style='padding-left: 9px'>" . $row['gender']; ?> </td></tr> <tr><td style='color:#f7f0e4;background-color:#1b3c33; text-align:center'><?php 
+      echo "<b>이메일 주소</b></td><td style='padding-left: 9px'>" . $row['email']; ?> </td> </tr></table><?php 
+
+   }
+?>
+
+<div style='padding-top: 5px; padding-left: 430px;'>
+   <button type="button" class="btn btn-sm"><a href="./changeinfo.php">회원정보 수정</a></button>
+   <button type="button" class="btn btn-sm"><a href="./logout.php">로그아웃</a></button>
+</div>
+<hr class="line">
+   <h2 style='color:#1b3c33; padding-left:10px; margin-bottom:10px;'> MY REVIEW </h2>
+
+<?php
+
+   $query_info = "SELECT * FROM user_review WHERE user_id='$id'";
+
+   $result = $conn->query($query_info);
+
+   while($row = $result->fetch_array(MYSQLI_ASSOC)){
 /*
-		$movie_idx = $row['movie_idx'];
+      $movie_idx = $row['movie_idx'];
 
-		$query_idx = "SELECT movie_title FROM movie_info WHERE movie_idx='$movie_idx'";
-		$result_idx = $conn->query($query_idx);
-		$row_idx = $result_idx->fetch_array(MYSQLI_ASSOC);
+      $query_idx = "SELECT movie_title FROM movie_info WHERE movie_idx='$movie_idx'";
+      $result_idx = $conn->query($query_idx);
+      $row_idx = $result_idx->fetch_array(MYSQLI_ASSOC);
 */
-		?>
-		<table>
-		<tr>
-		<?php
-		echo "<td width=120 style='background-color:#009900; text-align:center'><b>MOVIE TITLE</b></td><td style='padding-left: 9px'>" . $row['movie_title']; ?></td></tr> <?php 
-		echo "<tr><td style='background-color:#009900; text-align:center'><b>MY RATING</b></td><td style='padding-left: 9px'>" . $row['movie_rating']; ?> </td></tr> <?php 
-		echo "<tr><td style='background-color:#009900; text-align:center'><b>MY REVIEW</b></td><td style='padding-left: 9px'>" . $row['movie_review']; ?> </td></tr> </br> <?php 
+      ?>
+      <table style="background-color:#f7f0e4; border:solid 5px #1b3c33;">
+      <tr>
+      <?php
+      echo "<td width=120 style='color:#f7f0e4; background-color:#1b3c33; text-align:center'><b>MOVIE TITLE</b></td><td style='padding-left: 9px'>" . $row['movie_title']; ?></td></tr> <?php 
+      echo "<tr><td width=120 style='color:#f7f0e4; background-color:#1b3c33; text-align:center'><b>MY RATING</b></td><td style='padding-left: 9px'>" . $row['movie_rating']; ?> </td></tr> <?php 
+      echo "<tr><td width=120 style='color:#f7f0e4; background-color:#1b3c33; text-align:center'><b>MY REVIEW</b></td><td style='padding-left: 9px'>" . $row['movie_review']; ?> </td></tr> </br> <?php 
 
-	}
+   }
 ?>
 
 
@@ -100,5 +111,6 @@
 }
 
 ?>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.js"></script>
 </body>
-</html>
