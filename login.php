@@ -77,7 +77,7 @@
 </head>
 <body class="text-center">
 	<form class="form-signin" name="user_login" method="post" action="./login.php">
-		<img class="mb-4" src="/images/ewha.svg" alt="" width="216" height="216">
+		<img class="mb-4" src="./images/ewha.svg" alt="" width="216" height="216">
 		<h1 class="h3 mb-3 font-weight-normal">Ewha Moviegoer</h1>
 		<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
 		<label for="inputEmail" class="sr-only">user id</label>
@@ -85,6 +85,7 @@
 		<label for="inputPassword" class="sr-only">password</label>
 		<input type="password" name="user_pw" class="form-control" placeholder="password" required>
 		<button class="btn btn-lg btn-primary btn-block" type="submit" value="login">Sign in</button>
+		<p style="padding-top:10px">Don't have an account? <a href="register.php">Sign up now</a>.</p>
 	</form>
 </body>
 </html>

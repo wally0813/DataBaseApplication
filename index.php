@@ -1,49 +1,51 @@
-<?php
-
-	session_start();
-
-	include "config.php";
-
-	if(!isset($_SESSION['user_id'])){
-?>
-
 <!DOCTYPE html>
 <meta charset="utf-8" />
 <html>
 <head>
 	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Jekyll v3.8.5">
-    <title>Carousel Template · Bootstrap</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Jekyll v3.8.5">
+  <title>Index</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/carousel/">
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/carousel/">
 
-    <!-- Bootstrap core CSS -->
-	<link href="/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/bootstrap.css">
+ 
+  <style>
+  .circle{
+   /*margin-left:11.5rem;*/
+  display:inline-block;
+  text-align: center;
+  width: 216px;
+  height: 216px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 3px 3px 5px 3px;
+ 
+  }
+  .circle img {
+  display:inline;
+  width: auto;
+  height: 100%;
+  object-fit: cover;
+  }
 
+  </style>
 
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
     <!-- Custom styles for this template -->
     <link href="carousel.css" rel="stylesheet">
 </head>
-<body>
+<body style="padding-left:30px; padding-right:30px">
+<?php
+
+session_start();
+
+include "config.php";
+
+if(!isset($_SESSION['user_id'])){
+?>
 	<a href="./login.php">login</a>
 	<a href="./register.php">register</a>
 
@@ -52,11 +54,11 @@
 	}else{
 
 ?>
-  <div style="text-align:center; padding-left:100px">
-  <b> HELLO! <?php echo $_SESSION['user_id'] ?> </b>
-  <div style="float:right;">
-		<button><a class="btn btn-secondary" href="./mypage.php" role="button">mypage</a></button>
-		<button><a class="btn btn-secondary" href="./logout.php" role="button">logout</a></button>
+  <div style="text-align:center; margin-top:-20px; margin-bottom:-10px; padding-left:150px;">
+  <b style="font-size:25px"> HELLO! <?php echo $_SESSION['user_id'] ?> </b>
+  <div style="float:right; margin-right:-10px">
+		<button type="button" class="btn btn-sm"><a href="./mypage.php" role="button">mypage</a></button>
+		<button type="button" class="btn btn-sm"><a href="./logout.php" role="button">logout</a></button>
   </div></div>
   </br>
 <?php
@@ -70,7 +72,7 @@
 <div class="wpb_wrapper">
 <div class="fw-section hb-fw-599b22a654ae9 without-border no-overlay light-style"
  style="
-   background-image: url(/images/theater.png);
+   background-image: url(./images/theater.png);
    min_height:200px;
     background-size: cover;
    background-color: #FFFFCC; 
@@ -102,22 +104,28 @@
 		<a href="theater.php?idx=<?php echo $row['theater_idx'] ?>"> <?php echo $row['theater_name']."\t"; ?> </a> </br> <?php
 	}	
 ?>
-	<div class="row" style="padding-bottom: 500px">
-	  <div class="col-lg-4" style="padding-left: 60px; float: left; width: 30%; text-align: center;">
-        <img class="mb-4" src="/images/cgv.jpg" alt="" width="216" height="216">
-		<h2>신촌 cgv 아트레온</h2>
-		<button><a class="btn btn-secondary" href="theater.php?idx=1" role="button">View details &raquo;</a></button>
+	<div class="row" style="padding-left: 70px; padding-bottom: 300px">
+	  <div class="col-lg-4" style="float: left; width: 30%; text-align: center;">
+    <div class="circle" >
+      <img class="mb-4" src="./images/cgv.jpg" width="216" height="216"></div>
+        <h2 style="font-size:20px">신촌 cgv 아트레온</h2>
+        <a href="theater.php?idx=1" class="btn btn-success">View details &raquo;</a>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4" style="float: left; width: 30%; text-align: center;">
-        <img class="mb-4" src="/images/mega.jpg" alt="" width="216" height="216">
-		<h2>신촌 메가박스</h2>
-        <button><a class="btn btn-secondary" href="theater.php?idx=2" role="button">View details &raquo;</a></button>
+      <div class="circle" >
+        <img class="mb-4" src="./images/mega.jpg" alt="" width="216" height="216"></div>
+		<h2 style="font-size:20px">신촌 메가박스</h2>
+        <a class="btn btn-success" href="theater.php?idx=2">View details &raquo;</a>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4" style="float: left; width: 30%; text-align: center;">
-        <img class="mb-4" src="/images/momo.jpg" alt="" width="216" height="216">
-		<h2>아트하우스 모모</h2>
-        <button><a class="btn btn-secondary" href="theater.php?idx=3" role="button">View details &raquo;</a></button>
+      <div class="circle" >
+        <img class="mb-4" src="./images/momo.jpg" alt="" width="216" height="216" ></div>
+		<h2 style="font-size:20px">아트하우스 모모</h2>
+        <a class="btn btn-success" href="theater.php?idx=3">View details &raquo;</a>
       </div><!-- /.col-lg-4 -->
   </div><!-- /.row -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.js"></script>
 </body>
 </html>
