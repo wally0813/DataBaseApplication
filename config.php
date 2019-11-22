@@ -1,6 +1,6 @@
 <?php @ob_start();
 
-	$conn = mysqli_connect("localhost","root","apmsetup","movie_db");
+	$conn = mysqli_connect("localhost","root","apmsetup","moviedb");
 
 	$conn->set_charset("utf8");
 

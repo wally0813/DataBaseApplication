@@ -3,7 +3,7 @@
 	session_start();
 	include "config.php";
 
-	if( !empty($_POST['review_idx']) ){
+	if( isset($_POST['review_idx']) ){
 		// modify
 
 		$idx = $_POST['review_idx'];

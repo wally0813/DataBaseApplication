@@ -44,7 +44,7 @@
 
 			$row = $result->fetch_array(MYSQLI_ASSOC);
 
-			if ( $row['user_id'] ){
+			if ( !empty($row['user_id']) ){
 
 			?>
 				<script>alert("user id is duplicate")</script>
@@ -67,16 +67,20 @@
 					if ( $result && $result2 ){
 
 						?>
-						<script>alert("register success")</script>
+						<script>
+							alert("register success");
+							history.go(-1);
+						</script>
 
 						<?php		
-						header("Location: login.php");
 
 					}else{
 
 						?>
 						<script>alert("database error")</script>
+
 						<?php
+
 					}
 
 				}else{
@@ -93,6 +97,7 @@
 			?>
 				<script>alert("database error")</script>
 			<?php
+
 		}
 
 	}else{
