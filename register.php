@@ -1,3 +1,7 @@
+<?php
+	session_start();
+	include "config.php";
+?>
 <!DOCTYPE html>
 <meta charset="utf-8" />
 <html>
@@ -25,8 +29,6 @@
 
 <?php
 
-	include "config.php";
-
 	if (!empty($_POST['user_id'])){
 
 		$id = $_POST['user_id'];
@@ -47,7 +49,10 @@
 			if ( !empty($row['user_id']) ){
 
 			?>
-				<script>alert("user id is duplicate")</script>
+				<script>
+					alert("user id is duplicate");
+					history.go(-1);
+				</script>
 			<?php
 			}else{
 
@@ -69,15 +74,18 @@
 						?>
 						<script>
 							alert("register success");
-							history.go(-1);
 						</script>
 
-						<?php		
+						<?php	
+							header("Location: login.php");	
 
 					}else{
 
 						?>
-						<script>alert("database error")</script>
+						<script>
+							alert("database error");
+							history.go(-1);
+						</script>
 
 						<?php
 
@@ -86,7 +94,10 @@
 				}else{
 
 					?>
-					<script>alert("no such genre")</script>
+					<script>
+						alert("no such genre");
+						history.go(-1);
+					</script>
 					<?php
 				}
 
