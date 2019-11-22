@@ -1,3 +1,11 @@
+<?php
+
+   session_start();
+
+   include "config.php";
+
+?>
+
 <!DOCTYPE html>
 <meta charset="utf-8" />
 <html>
@@ -25,10 +33,6 @@
 </head>
 
 <?php
-
-   session_start();
-
-   include "config.php";
 
    if(!isset($_SESSION['user_id'])){
 
@@ -75,7 +79,7 @@
 
 <div style='padding-top: 5px; padding-left: 430px;'>
    <button type="button" class="btn btn-sm"><a href="./changeinfo.php">회원정보 수정</a></button>
-   <button type="button" class="btn btn-sm"><a href="./logout.php">로그아웃</a></button>
+   <button type="button" class="btn btn-sm"><a href="./withdraw.php">회원탈퇴</a></button>
 </div>
 <hr class="line">
    <h2 style='color:#1b3c33; padding-left:10px; margin-bottom:10px;'> MY REVIEW </h2>
@@ -95,12 +99,28 @@
       $row_idx = $result_idx->fetch_array(MYSQLI_ASSOC);
 */
       ?>
+
+
+      <form name="user_review" method="post" action="writereview.php">
       <table style="background-color:#f7f0e4; border:solid 5px #1b3c33;">
+
+
       <tr>
+
       <?php
-      echo "<td width=120 style='color:#f7f0e4; background-color:#1b3c33; text-align:center'><b>MOVIE TITLE</b></td><td style='padding-left: 9px'>" . $row['movie_title']; ?></td></tr> <?php 
-      echo "<tr><td width=120 style='color:#f7f0e4; background-color:#1b3c33; text-align:center'><b>MY RATING</b></td><td style='padding-left: 9px'>" . $row['movie_rating']; ?> </td></tr> <?php 
-      echo "<tr><td width=120 style='color:#f7f0e4; background-color:#1b3c33; text-align:center'><b>MY REVIEW</b></td><td style='padding-left: 9px'>" . $row['movie_review']; ?> </td></tr> </br> <?php 
+      echo "<td width=120 style='color:#f7f0e4; background-color:#1b3c33; text-align:center'><b>MOVIE TITLE</b></td><td style='padding-left: 9px'>". $row['movie_title']; ?></td></tr> 
+      <?php
+      echo "<td width=120 style='color:#f7f0e4; background-color:#1b3c33; text-align:center'><b>MOVIE RATING</b></td><td style='padding-left: 9px'> <input type='text' name='movie_rating' value='". $row['movie_rating']."'>"; ?></td></tr>
+      <?php
+      echo "<td width=120 style='color:#f7f0e4; background-color:#1b3c33; text-align:center'><b>MOVIE REVIEW</b></td><td style='padding-left: 9px'> <input type='text' name='movie_review' value='". $row['movie_review']."'>"; ?></td></tr>
+
+      <input type="hidden" name="review_idx" value="<?php echo $row['review_idx']?>">
+
+      <div style='padding-top: 5px; padding-bottom: 5px; padding-left: 503px;'>
+         <button type="submit" class="btn btn-sm">수정</button>
+         <button type="button" class="btn btn-sm"><a href="./deletereview.php?idx=<?php echo $row['review_idx'] ?>">삭제</a></button>
+      </div>
+      <?php 
 
    }
 ?>

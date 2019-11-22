@@ -1,3 +1,10 @@
+<?php
+
+session_start();
+
+include "config.php";
+
+?>
 <!DOCTYPE html>
 <meta charset="utf-8" />
 <html>
@@ -38,11 +45,8 @@
     <link href="carousel.css" rel="stylesheet">
 </head>
 <body style="padding-left:30px; padding-right:30px">
+
 <?php
-
-session_start();
-
-include "config.php";
 
 if(!isset($_SESSION['user_id'])){
 ?>

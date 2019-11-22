@@ -1,4 +1,10 @@
-﻿
+<?php
+
+	session_start();
+
+	include "config.php";
+
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -39,11 +45,7 @@
   </head>
 
   <body>
-  <?php
-
-	session_start();
-
-	include "config.php";
+ <?php
 
 	if(!isset($_GET['idx'])){
 
@@ -80,7 +82,7 @@
         <div class="container">
 		<?php
 
-		$query_info = "SELECT m.movie_idx, m.movie_title,m.imgurl FROM movie_info as m JOIN screen_info as s ON m.movie_idx=s.movie_idx WHERE theater_idx='$idx'";
+		$query_info = "SELECT m.filename, m.movie_idx, m.movie_title FROM movie_info as m JOIN screen_info as s ON m.movie_idx=s.movie_idx WHERE theater_idx='$idx'";
 		$result = $conn->query($query_info);
 		$i = 0;
 		while($row = $result->fetch_array(MYSQLI_ASSOC)){
@@ -97,9 +99,9 @@
           <div class="row row-flex">
             <div class="col-md-4" style="margin-bottom:30px;">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" src=<?php echo '"'.$row['imgurl'].'"';?> width="200"; alt="Card image cap">
+                <img class="card-img-top" src=<?php echo './posters/'.$row['filename'];?> width=200; alt="Card image cap">
                 <div class="card-body">
-                  <p class="card-text"><b><?php echo $row['movie_title'] ?></b></p>
+                  <p class="card-text"><b><?php echo $row['movie_title']; ?></b></p>
                   <div class="d-flex justify-content-between align-items-center">
                   <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='movie.php?idx=<?php echo $row['movie_idx'] ?>'" style="margin-bottom:20px;">자세히</button>
                   </div>

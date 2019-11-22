@@ -34,24 +34,49 @@
 	$query = "SELECT * FROM movie_info WHERE movie_idx='$idx'";
 	$result = $conn->query($query);
 
-	while($row = $result->fetch_array(MYSQLI_ASSOC)){
+	$row = $result->fetch_array(MYSQLI_ASSOC);
 
-		$genre_idx = $row['genre_idx'];
+	$genre_idx = $row['genre_idx'];
 
-		$query_idx = "SELECT genre FROM movie_genre WHERE genre_idx='$genre_idx'";
-		$result_idx = $conn->query($query_idx);
-		$row_idx = $result_idx->fetch_array(MYSQLI_ASSOC);
+	$query_idx = "SELECT genre FROM movie_genre WHERE genre_idx='$genre_idx'";
+	$result_idx = $conn->query($query_idx);
+	$row_idx = $result_idx->fetch_array(MYSQLI_ASSOC);
 
-		?> <h1> <?php echo $row['movie_title']; ?> </h1> <?php 
-		echo "DIRECTOR: " . $row['director']; ?> </br> <?php 
-		echo "ACTORS: " . $row['main_actor']; ?> </br> <?php 
-		echo "GENRE: " . $row_idx['genre']; ?> </br> <?php 
-		echo "RUNNING_TIME: " . $row['running_time']; ?> </br> <?php 
+	?> <h1> <?php echo $row['movie_title']; ?> </h1> <?php 
+	echo "DIRECTOR: " . $row['director']; ?> </br> <?php 
+	echo "ACTORS: " . $row['main_actor']; ?> </br> <?php 
+	echo "GENRE: " . $row_idx['genre']; ?> </br> <?php 
+	echo "RUNNING_TIME: " . $row['running_time']; ?> </br> <?php 
 
-	}
+	
 ?>
 
 	<h2> MOVIE REVIEW </h2>
+
+	<form name="user_review" method="post" action="writereview.php">
+
+		<table>
+			<tr> 
+				<th> RATING </th>
+				<td> <input type="text" name="movie_rating"> </td>
+			</tr>
+			<tr>
+				<th> REVIEW </th>
+				<td> <input type="text" name="movie_review"> </td>
+			</tr>
+			<tr>
+				<td>
+					<input type="hidden" name="movie_idx" value="<?php echo $row['movie_idx']?>">
+					<input type="hidden" name="movie_title" value="<?php echo $row['movie_title']?>">
+					<input type="submit" value="추가">
+				</td>
+			</tr>
+
+		</table>
+
+	</form>
+
+      
 
 <?php
 
