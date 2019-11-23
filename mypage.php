@@ -46,7 +46,6 @@
       $id = $_SESSION['user_id'];
 ?>
 
-
 <body bgcolor = "#f2f0ed" style="margin-bottom:100px; padding-left:30px;">
    <font color="#1b3c33"><h1 style='background-color:white; padding-top:10px;padding-bottom:20px;padding-left: 10px; margin-right:500px;'>마이 페이지 <?php echo $id; ?> </h1></font>
    <h2 style='color:#1b3c33; padding-left:10px;'> 회원 정보 </h2>
