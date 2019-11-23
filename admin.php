@@ -11,13 +11,16 @@
 <html>
 <head>
    <title> admin page </title>
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    <link rel="stylesheet" href="css/bootstrap.css">
+   <link href="signin.css" rel="stylesheet">
    <style>
       th, td {
          border: 1px solid #444444;
       }
       table {
          width: 600px;
+         margin:auto;
          border: 1px solid #444444;
          border-collapse: collapse;
       }
@@ -29,6 +32,15 @@
          margin-top: 50px;
          border: thin solid rgb(201, 201, 201);
       }
+      .au {
+        overflow: auto;
+      }
+      .box {
+        width: 100% ;
+        height: 110%;     
+        float: left;
+        margin-left: 20px;
+        margin-right: 10px;}
    </style>
 </head>
 
@@ -65,17 +77,18 @@
          }
 
       }
-
+      //로그인 된 경우
 
       ?>
-
-      <h1> ADMIN PAGE </h1>
+<div class="box au" style="text-align:center">
+      <h1> <?php echo $id ?> 관리자 페이지 </h1>
 
       <h3> 현재 상영 영화 </h3>
-
+      <button type="button" class="btn btn-sm"><a href="./logout.php">로그아웃</a></button>
+      <div>
       <?php
 
-      
+      // 해당 영화관 상영 영화의 movie_info 읽어오기
 
       $query_info = "SELECT * FROM movie_info as m LEFT OUTER JOIN screen_info as s ON m.movie_idx=s.movie_idx LEFT OUTER JOIN admin_info as a ON a.theater_idx = s.theater_idx WHERE a.admin_id='$id'";
 
@@ -159,7 +172,7 @@
          <button type="button" class="btn btn-sm"><a href="./admin.php?func=add&idx=<?php echo $row['movie_idx'] ?>">추가</a></button>
       </div>
 
-      
+      </div></div>
 
    <?php
 }
@@ -219,7 +232,7 @@
       <label for="inputPassword" class="sr-only">password</label>
       <input type="password" name="user_pw" class="form-control" placeholder="password" required>
       <button class="btn btn-lg btn-primary btn-block" type="submit" value="login">Sign in</button>
-      
+      <a type="button" class="btn btn-lg btn-primary btn-block" href="login.php">Sign in as user</a>
       </form>
 
 

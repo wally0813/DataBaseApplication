@@ -53,8 +53,7 @@
 			$result = $conn->query($query);
 			
 			if ( $result ){
-
-				?>
+				?>				
       				<script>alert("add success!");
       					history.go(-1);
       				</script>

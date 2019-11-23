@@ -65,12 +65,7 @@ if(!isset($_SESSION['user_id'])){
 		<button type="button" class="btn btn-sm"><a href="./logout.php" role="button">logout</a></button>
   </div></div>
   </br>
-<?php
-  $query_info = "SELECT movie_title FROM user_review WHERE movie_rating = (SELECT MAX(movie_rating) FROM user_review);";
-  $result = $conn->query($query_info);
-  $row = $result->fetch_array(MYSQLI_ASSOC); 
-  }
-?>
+
 <div class="vc_row element-row row vc_custom_1478727859541">
 <div class="wpb_column vc_column_container vc_col-sm-12">
 <div class="wpb_wrapper">
@@ -89,25 +84,25 @@ if(!isset($_SESSION['user_id'])){
 <div class="col-12 nbm">
 <div id="learning-automated-div" style="text-align: center; font-size: 48px;
  line-height: 52px; padding: 100px 5px 10px 5px;">
+ <?php
+  $query_info = "SELECT movie_idx, movie_title FROM user_review WHERE movie_rating = (SELECT MAX(movie_rating) FROM user_review);";
+  $result = $conn->query($query_info);
+  $row = $result->fetch_array(MYSQLI_ASSOC); 
+  ?>
 <span style="color:#000000;"><b><?php echo $row['movie_title']."\n";?></b></span></div>
 <div style="text-align: center; font-size: 18px; line-height: 22px; padding: 0 5px 40px 5px;">
 <span style="color:#000000;">이화인이 뽑은 금주의 베스트 무비를 지금 확인해보세요!</span></div>
 <div style="text-align: center;">
-<a class="btn best-movie" href="">영화 보기>></a>
+  <a class="btn best-movie" href="movie.php?idx=<?php echo $row['movie_idx'] ?>"> 영화 보기>> </a> </br> <?php
+  }
+?>
 </div>
 </div>
 </div>
 </div></div></div>
 
 <h1 style="text-align:center"> SELECT THEATER </h1>
-<?php
-	$query_info = "SELECT * FROM theater_info";
-	$result = $conn->query($query_info);	
-	while($row = $result->fetch_array(MYSQLI_ASSOC)){
-		?>
-		<a href="theater.php?idx=<?php echo $row['theater_idx'] ?>"> <?php echo $row['theater_name']."\t"; ?> </a> </br> <?php
-	}	
-?>
+<br><br><br><br>
 	<div class="row" style="padding-left: 70px; padding-bottom: 300px">
 	  <div class="col-lg-4" style="float: left; width: 30%; text-align: center;">
     <div class="circle" >
