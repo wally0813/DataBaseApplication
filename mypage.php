@@ -50,7 +50,6 @@
 <body bgcolor = "#f2f0ed" style="margin-bottom:100px; padding-left:30px;">
    <font color="#1b3c33"><h1 style='background-color:white; padding-top:10px;padding-bottom:20px;padding-left: 10px; margin-right:500px;'>마이 페이지 <?php echo $id; ?> </h1></font>
    <h2 style='color:#1b3c33; padding-left:10px;'> 회원 정보 </h2>
-
 <?php
 
    $query_info = "SELECT * FROM user_info WHERE user_id='$id'";
@@ -77,13 +76,16 @@
    }
 ?>
 
-<div style='padding-top: 5px; padding-left: 430px;'>
-   <button type="button" class="btn btn-sm"><a href="./changeinfo.php">회원정보 수정</a></button>
-   <button type="button" class="btn btn-sm"><a href="./withdraw.php">회원탈퇴</a></button>
-</div>
+   <div style='padding-top: 5px; padding-left: 257px;'>
+     <button type="button" class="btn btn-sm"><a href="./withdraw.php">회원탈퇴</a></button>
+     <button type="button" class="btn btn-sm"><a href="./changeinfo.php">회원정보 수정</a></button>
+     <button type="button" class="btn btn-sm"><a href="./index.php">메인화면으로</a></button>
+     <button type="button" class="btn btn-sm"><a href="./logout.php">로그아웃</a></button>
+   </div>
+
 <hr class="line">
    <h2 style='color:#1b3c33; padding-left:10px; margin-bottom:10px;'> MY REVIEW </h2>
-
+   
 <?php
 
    $query_info = "SELECT * FROM user_review WHERE user_id='$id'";
