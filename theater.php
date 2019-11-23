@@ -73,7 +73,10 @@
         <div class="container" style="background-color: #fdfcf0;">
           <h1 class="jumbotron-heading" style="font-size:50px;"><b><?php echo $row['theater_name']; ?></b></h1>
           <p class="lead text-muted"><?php echo $row['theater_address']; ?> </br></p>
-          
+		  
+		</div>
+		<div style="padding-top:50px; margin-bottom:-50px">
+		  	<button type="button" class="btn btn-secondary btn-sm"><a href="./index.php">메인화면으로</a></button>
         </div>
       </section>
 	  <?php } ?>
