@@ -69,11 +69,11 @@
 	echo "장르</td><td>" . $row_idx['genre']; ?> </td> </tr><tr style="border:1px solid #666666"><td width=80 style='color:#f7f0e4; background-color:#1b3c33; text-align:center'> <?php 
 	echo "상영시간</td><td>" . $row['running_time']; ?>  </td> </tr></table> <?php 
 	
-	$query = "SELECT AVG(movie_rating), age, gender FROM movie_review WHERE movie_idx='$idx' GROUP BY movie_idx";
+	$query = "SELECT movie_rating, age, gender FROM movie_review WHERE movie_idx='$idx' GROUP BY movie_idx";
 	$result = $conn->query($query);
 	$row2 = $result->fetch_array(MYSQLI_ASSOC);
 	
-	echo "<h2> ☆☆ 평점 : " . $row2['AVG(movie_rating)']." ☆☆</h2>"; ?> <?php 
+	echo "<h2> ☆☆ 평점 : " . $row2['movie_rating']." ☆☆</h2>"; ?> <?php 
 	if($row2['gender']=="f"){
 		echo " 이 영화를 " . $row2['age']."대 여성들이 좋아합니다";
 	}else{
@@ -127,10 +127,23 @@
 		<td width=80 style='color:#f7f0e4; background-color:#1b3c33; text-align:center'> <?php
 		echo "USER ID</td><td>" . $row['user_id']; ?> </td> </tr><tr style="border:1px solid #666666"><td width=80 style='color:#f7f0e4; background-color:#1b3c33; text-align:center'> <?php 
 		echo "MY RATING</td><td>" . $row['movie_rating']; ?> </td> </tr><tr style="border:1px solid #666666"><td width=80 style='color:#f7f0e4; background-color:#1b3c33; text-align:center'> <?php 
-		echo "MY REVIEW</td><td>" . $row['movie_review']; ?> </td></tr></table> <?php 
-
-	}
-?>
+		echo "MY REVIEW</td><td>" . $row['movie_review']; ?> </td></tr></table><br> 
+		<?php
+		}
+		?>
+		<?php 
+		$query = "SELECT AVG(movie_rating) FROM user_review WHERE movie_idx='$idx' GROUP BY movie_idx";
+		$result = $conn->query($query);
+		$row2 = $result->fetch_array(MYSQLI_ASSOC);
+		echo "사용자 평균 평점은 ".$row2['AVG(movie_rating)']."점 입니다.";?><br>
+		<?php
+		$query = "SELECT ifnull(COUNT(user_id),0) FROM user_review WHERE movie_idx='$idx' GROUP BY movie_idx";
+		$result = $conn->query($query);
+		$row3 = $result->fetch_array(MYSQLI_ASSOC);
+		echo "총 ".$row3['ifnull(COUNT(user_id),0)']."명의 사용자가 후기를 남겼습니다.\n";
+		
+	
+	?><br>
 
 	<h2> MOVIE SCREEN INFO </h2>
 
