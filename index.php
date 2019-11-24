@@ -39,7 +39,7 @@ include "header.php";
 </div>
 </div></div></div>
 
-<h1 style="text-align:center"> SELECT THEATER </h1>
+<h1 style="text-align:center; font-family: 'Nanum Gothic', sans-serif;"> SELECT THEATER </h1>
 <br><br><br><br>
 	<div class="row" style="padding-left: 70px; padding-bottom: 300px">
 	  <div class="col-lg-4" style="float: left; width: 30%; text-align: center;">

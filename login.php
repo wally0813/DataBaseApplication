@@ -52,8 +52,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/sign-in/">
 	<link href="/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
 	<style>
 		.bd-placeholder-img {
+			font-family: "Nanum Gothic", sans-serif;
 			font-size: 1.125rem;
 			text-anchor: middle;
 			-webkit-user-select: none;
@@ -66,11 +68,14 @@
 			font-size: 3.5rem;
 			}
 		}
+		.body{
+			font-family: "Nanum Gothic", sans-serif;
+		}
 	</style>
 	<!-- Custom styles for this template -->
 	<link href="signin.css" rel="stylesheet">
 </head>
-<body class="text-center">
+<body style="font-family: 'Nanum Gothic', sans-serif;" class="text-center">
 	<form class="form-signin" name="user_login" method="post" action="./login.php">
 		<img class="mb-4" src="./images/ewha.svg" alt="" width="216" height="216">
 		<h1 class="h3 mb-3 font-weight-normal">Ewha Moviegoer</h1>
@@ -79,9 +84,9 @@
 		<input type="text" name="user_id", class="form-control" placeholder="user id" required autofocus>
 		<label for="inputPassword" class="sr-only">password</label>
 		<input type="password" name="user_pw" class="form-control" placeholder="password" required>
-		<button class="btn btn-lg btn-primary btn-block" type="submit" value="login">Sign in</button>
+		<button style="font-family: 'Nanum Gothic', sans-serif;" class="btn btn-lg btn-primary btn-block" type="submit" value="login">Sign in</button>
 		<a type="button" class="btn btn-lg btn-primary btn-block" href="admin.php">Sign in as admin</a>
-		<p style="padding-top:10px">Don't have an account? <a href="register.php">Sign up now</a>.</p>
+		<p style="padding-top:10px; font-family: 'Nanum Gothic', sans-serif;">Don't have an account? <a href="register.php">Sign up now</a>.</p>
 	</form>
 </body>
 </html>
