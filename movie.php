@@ -69,11 +69,11 @@
 	echo "장르</td><td>" . $row_idx['genre']; ?> </td> </tr><tr style="border:1px solid #666666"><td width=80 style='color:#f7f0e4; background-color:#1b3c33; text-align:center'> <?php 
 	echo "상영시간</td><td>" . $row['running_time']; ?>  </td> </tr></table> <?php 
 	
-	$query = "SELECT * FROM movie_review WHERE movie_idx='$idx'";
+	$query = "SELECT AVG(movie_rating), age, gender FROM movie_review WHERE movie_idx='$idx' GROUP BY movie_idx";
 	$result = $conn->query($query);
 	$row2 = $result->fetch_array(MYSQLI_ASSOC);
 	
-	echo "<h2> ☆☆ 평점 : " . $row2['movie_rating']." ☆☆</h2>"; ?> <?php 
+	echo "<h2> ☆☆ 평점 : " . $row2['AVG(movie_rating)']." ☆☆</h2>"; ?> <?php 
 	if($row2['gender']=="f"){
 		echo " 이 영화를 " . $row2['age']."대 여성들이 좋아합니다";
 	}else{
