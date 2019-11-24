@@ -10,9 +10,9 @@ include "header.php";
 <div class="fw-section hb-fw-599b22a654ae9 without-border no-overlay light-style"
  style="
    background-image: url(./images/theater.png);
-   min_height:200px;
-    background-size: cover;
-   background-color: #FFFFCC; 
+   min_height:1000px;
+    background-size: contain;
+   background-color: #FFFFFF; 
    background-repeat: no-repeat;
    background-position: center center;
     padding-top: 40px;
@@ -27,10 +27,10 @@ include "header.php";
   $result = $conn->query($query_info);
   $row = $result->fetch_array(MYSQLI_ASSOC); 
   ?>
-<span style="color:#000000;"><b><?php echo $row['movie_title']."\n";?></b></span></div>
+<span style="color:#FFFFFF;"><b><?php echo $row['movie_title']."\n";?></b></span></div>
 <div style="text-align: center; font-size: 18px; line-height: 22px; padding: 0 5px 40px 5px;">
-<span style="color:#000000;">이화인이 뽑은 금주의 베스트 무비를 지금 확인해보세요!</span></div>
-<div style="text-align: center;">
+<span style="color:#FFFFFF;">이화인이 뽑은 금주의 베스트 무비를 지금 확인해보세요!</span></div>
+<div style="text-align: center; ">
   <a class="btn best-movie" href="movie.php?idx=<?php echo $row['movie_idx'] ?>"> 영화 보기>> </a> </br> <?php
   
 ?>
