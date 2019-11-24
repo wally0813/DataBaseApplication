@@ -1,8 +1,6 @@
 <?php
 
-	session_start();
-
-	include "config.php";
+	include "header.php";
 
 	if(!isset($_GET['idx'])){
 
