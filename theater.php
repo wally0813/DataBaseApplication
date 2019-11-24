@@ -144,7 +144,7 @@ include "header.php";
 			<div class="table-responsive">
 				<?php
 
-				$query_info = "SELECT * FROM menu_info WHERE theater_idx='$idx'";
+				$query_info = "SELECT * FROM menu_info WHERE theater_idx='$idx' ORDER BY price DESC";
 
 				$result = $conn->query($query_info);
 
