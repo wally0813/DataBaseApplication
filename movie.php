@@ -24,8 +24,21 @@
 <html>
 <head>
 	<title> movie </title>
+	<style>
+		#divPosition{
+			border:1px solid #F2F2F2;
+			position: absolute;
+			margin: -150px 0px 0px -200px;
+			left: 50%;
+			top: 150px;
+			padding: 5px;
+			text-align: center;
+		}
+	</style>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
+<body><div class="row" id="divPosition" style="padding-left:20px; padding-right:20px">
+
 
 	<h2> MOVIE INFO </h2>
 
@@ -42,17 +55,35 @@
 	$result_idx = $conn->query($query_idx);
 	$row_idx = $result_idx->fetch_array(MYSQLI_ASSOC);
 
-	?> <h1> <?php echo $row['movie_title']; ?> </h1> <?php 
-	echo "DIRECTOR: " . $row['director']; ?> </br> <?php 
-	echo "ACTORS: " . $row['main_actor']; ?> </br> <?php 
-	echo "GENRE: " . $row_idx['genre']; ?> </br> <?php 
-	echo "RUNNING_TIME: " . $row['running_time']; ?> </br> <?php 
-
+	?> <h1> 
+	<img class="card-img-top" src=<?php echo './posters/'.$row['filename'];?> width=200; alt="Card image cap">
+	<br><br>
+	<?php 
+	echo $row['movie_title']; ?> </h1>  
+	<table style="width: 350px; border: 1px solid #666666; border-collapse: collapse;">
+	<tr style="border:1px solid #666666"> 
+	<td width=80 style='color:#f7f0e4; background-color:#1b3c33; text-align:center'>
+	<?php
+	echo "감독</td><td>" . $row['director']; ?> </td> </tr><tr style="border:1px solid #666666"><td width=80 style='color:#f7f0e4; background-color:#1b3c33; text-align:center'><?php 
+	echo "주연</td><td>" . $row['main_actor']; ?> </td> </tr><tr style="border:1px solid #666666"><td width=80 style='color:#f7f0e4; background-color:#1b3c33; text-align:center'> <?php 
+	echo "장르</td><td>" . $row_idx['genre']; ?> </td> </tr><tr style="border:1px solid #666666"><td width=80 style='color:#f7f0e4; background-color:#1b3c33; text-align:center'> <?php 
+	echo "상영시간</td><td>" . $row['running_time']; ?>  </td> </tr></table> <?php 
+	
+	$query = "SELECT * FROM movie_review WHERE movie_idx='$idx'";
+	$result = $conn->query($query);
+	$row2 = $result->fetch_array(MYSQLI_ASSOC);
+	
+	echo "<h2> ☆☆ 평점 : " . $row2['movie_rating']." ☆☆</h2>"; ?> <?php 
+	if($row2['gender']=="f"){
+		echo " 이 영화를 " . $row2['age']."대 여성들이 좋아합니다";
+	}else{
+		echo " 이 영화를 " . $row2['age']."대 남성들이 좋아합니다";
+	}?> </br> <?php 
 	
 ?>
 
 	<h2> MOVIE REVIEW </h2>
-
+	<div style="padding-left:50px">
 	<form name="user_review" method="post" action="writereview.php">
 
 		<table>
@@ -73,11 +104,10 @@
 			</tr>
 
 		</table>
-
 	</form>
-
+	</div>
       
-
+	<h2> User Review </h2>
 <?php
 
 	$query_info = "SELECT * FROM user_review WHERE movie_idx='$idx'";
@@ -91,10 +121,13 @@
 		$query_idx = "SELECT movie_title FROM movie_info WHERE movie_idx='$movie_idx'";
 		$result_idx = $conn->query($query_idx);
 		$row_idx = $result_idx->fetch_array(MYSQLI_ASSOC);
-*/
-		echo "USER ID: " . $row['user_id']; ?> </br> <?php 
-		echo "MY RATING: " . $row['movie_rating']; ?> </br> <?php 
-		echo "MY REVIEW: " . $row['movie_review']; ?> </br> <?php 
+*/ ?>
+		<table style="width: 350px; border: 1px solid #666666; border-collapse: collapse;">
+		<tr style="border:1px solid #666666"> 
+		<td width=80 style='color:#f7f0e4; background-color:#1b3c33; text-align:center'> <?php
+		echo "USER ID</td><td>" . $row['user_id']; ?> </td> </tr><tr style="border:1px solid #666666"><td width=80 style='color:#f7f0e4; background-color:#1b3c33; text-align:center'> <?php 
+		echo "MY RATING</td><td>" . $row['movie_rating']; ?> </td> </tr><tr style="border:1px solid #666666"><td width=80 style='color:#f7f0e4; background-color:#1b3c33; text-align:center'> <?php 
+		echo "MY REVIEW</td><td>" . $row['movie_review']; ?> </td></tr></table> <?php 
 
 	}
 ?>
@@ -115,8 +148,8 @@
 		$result_idx = $conn->query($query_idx);
 		$row_idx = $result_idx->fetch_array(MYSQLI_ASSOC);
 */
-		?>
-		<a href="theater.php?idx=<?php echo $row['theater_idx'] ?>"> <?php echo $row['theater_name']."\t"; ?> </a> </br> <?php
+		?><div style="padding-bottom:5px">
+		<a type="button" class="btn btn-success" href="theater.php?idx=<?php echo $row['theater_idx'] ?>"> <?php echo $row['theater_name']."\t"; ?> </a> </div> <?php
 
 	}
 ?>
@@ -126,6 +159,9 @@
 
 }
 
-?>
+?><div style="padding-top:10px; margin-botton:20px">
+<a type="button" class="btn btn-default btn-sm" href="index.php">메인화면</a>
+</div>
+</div>
 </body>
 </html>
