@@ -1,8 +1,6 @@
 <?php
 
-	session_start();
-
-	include "config.php";
+	include "header.php";
 
 	if(!isset($_GET['idx'])){
 
@@ -24,13 +22,15 @@
 <html>
 <head>
 	<title> movie </title>
+	<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
 	<style>
 		#divPosition{
+			font-family: "Nanum Gothic", sans-serif;
 			border:1px solid #F2F2F2;
 			position: absolute;
 			margin: -150px 0px 0px -200px;
 			left: 50%;
-			top: 150px;
+			top: 200px;
 			padding: 5px;
 			text-align: center;
 		}

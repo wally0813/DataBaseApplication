@@ -12,16 +12,20 @@
 <head>
    <title> mypage </title>
    <link rel="stylesheet" href="css/bootstrap.css">
+   <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
    <style>
       th, td {
+         font-family: "Nanum Gothic", sans-serif;
          border: 1px solid #444444;
       }
       table {
+         font-family: "Nanum Gothic", sans-serif;
          width: 600px;
          border: 1px solid #444444;
          border-collapse: collapse;
       }
       hr.line{
+         font-family: "Nanum Gothic", sans-serif;
          width:1000px;
          border-bottom:0px;
          text-align:left;
@@ -47,8 +51,8 @@
 ?>
 
 <body bgcolor = "#f2f0ed" style="margin-bottom:100px; padding-left:30px;">
-   <font color="#1b3c33"><h1 style='background-color:white; padding-top:10px;padding-bottom:20px;padding-left: 10px; margin-right:500px;'>마이 페이지 <?php echo $id; ?> </h1></font>
-   <h2 style='color:#1b3c33; padding-left:10px;'> 회원 정보 </h2>
+   <font color="#1b3c33"><h1 style='background-color:white; padding-top:10px;padding-bottom:20px;padding-left: 10px; margin-right:500px; font-family: "Nanum Gothic", sans-serif;'>마이 페이지 <?php echo $id; ?> </h1></font>
+   <h2 style='color:#1b3c33; padding-left:10px; font-family: "Nanum Gothic", sans-serif;'> 회원 정보 </h2>
 <?php
 
    $query_info = "SELECT * FROM user_info WHERE user_id='$id'";
@@ -83,7 +87,7 @@
    </div>
 
 <hr class="line">
-   <h2 style='color:#1b3c33; padding-left:10px; margin-bottom:10px;'> MY REVIEW </h2>
+   <h2 style='color:#1b3c33; padding-left:10px; margin-bottom:10px; font-family: "Nanum Gothic", sans-serif;'> MY REVIEW </h2>
    
 <?php
 

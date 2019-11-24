@@ -85,8 +85,10 @@
 	<title> changeInfo </title>
 	<link href="css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 	<link href="form-validation.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
 	<style>
 		#divPosition{
+			font-family: "Nanum Gothic", sans-serif;
 			border:1px solid #F2F2F2;
 			position: absolute;
 			height: 670px;
@@ -98,6 +100,7 @@
 			background-color: #F2F2F2;
 		}
 		body{
+			font-family: "Nanum Gothic", sans-serif;
 			background-color: #F2F2F2;
 		}
 	</style>
