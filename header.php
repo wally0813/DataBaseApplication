@@ -19,6 +19,7 @@ include "config.php";
 
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 	<style>
 
 		.circle{
@@ -30,8 +31,7 @@ include "config.php";
 			height: 216px;
 			border-radius: 50%;
 			overflow: hidden;
-			box-shadow: 3px 3px 5px 3px;
-			
+			box-shadow: 3px 3px 5px 3px;			
 		}
 		.circle img {
 			display:inline;
@@ -46,6 +46,31 @@ include "config.php";
 
 		.b{
 			font-family: 'Nanum Gothic', 'sans-serif';
+		}
+
+		body{
+			background-image: url(./images/theater.png);
+			min_height:2000px;
+			background-size: inherit ;
+			background-color: #000000; 
+			background-repeat: no-repeat;
+			background-position: top;
+		}
+
+		#divPosition{
+			font-family: "Nanum Gothic", sans-serif;	
+			width:600px;
+			top: 200px;
+			padding: 5px;
+			text-align: center;
+		}
+
+		.container {
+			padding-right: 15px;
+			padding-left: 15px;
+			margin-right: auto;
+			margin-left: auto;
+			background: transparent;
 		}
 
 	</style>
@@ -63,8 +88,8 @@ include "config.php";
 		<div style="text-align:center; margin-top:-20px; margin-bottom:10px; padding-left:150px; padding-bottom:30px;font-family: 'Nanum Gothic', 'sans-serif';" >
 			
 			<div style="float:right; margin-right:-10px">
-				<button type="button" class="btn btn-sm"><a href="./login.php" role="button">login</a></button>
-				<button type="button" class="btn btn-sm"><a href="./register.php" role="button">register</a></button>
+				<button type="button" class="btn btn-dark"><a href="./login.php" style="color: white" role="button">login</a></button>
+				<button type="button" class="btn btn-dark"><a href="./register.php" style="color: white" role="button">register</a></button>
 			</div>
 
 		</div>
@@ -78,8 +103,8 @@ include "config.php";
 		<div style="text-align:center; margin-top:-20px; margin-bottom:-10px; padding-left:150px; padding-bottom:30px; font-family: 'Nanum Gothic', 'sans-serif';" >
 			
 			<div style="float:right; margin-right:-10px">
-				<button type="button" class="btn btn-sm"><a href="./mypage.php" role="button">mypage</a></button>
-				<button type="button" class="btn btn-sm"><a href="./logout.php" role="button">logout</a></button>
+				<button type="button" class="btn btn-dark"><a href="./mypage.php" style="color: white" role="button">mypage</a></button>
+				<button type="button" class="btn btn-dark"><a href="./logout.php" style="color: white" role="button">logout</a></button>
 			</div>
 		</div>
 	</br>
