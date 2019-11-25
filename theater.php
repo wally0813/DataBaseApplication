@@ -143,52 +143,52 @@ include "header.php";
 				?>
 
 			</div>
-		</div>
 
-		<h1 style="text-align: center; margin-top: 100px; margin-bottom: 50px;">
-			STORE 
-		</h1>
-		<div style="font-size:17px; padding-left: 100px; padding-right: 100px;" >
-			<?php
 
-			$query_info = "SELECT * FROM menu_info WHERE theater_idx='$idx' ORDER BY price DESC";
+			<h1 style="text-align: center; margin-top: 100px; margin-bottom: 50px;">
+				STORE 
+			</h1>
+			<div style="font-size:17px; padding-left: 100px; padding-right: 100px; padding-bottom: 200px;" >
+				<?php
 
-			$result = $conn->query($query_info);
+				$query_info = "SELECT * FROM menu_info WHERE theater_idx='$idx' ORDER BY price DESC";
 
-			?>
-			<table class="table table-bordered table-hover">
-				<thread>
-					<tr>
-						<th>메뉴이름</th>
-						<th>가    격</th>
-						<th>부가설명</th>
-					</tr>
-				</thread>
+				$result = $conn->query($query_info);
 
-				<tbody>
-					<?php
-
-					while($row = $result->fetch_array(MYSQLI_ASSOC)){
-
-						?>
-						<tr>
-							<td><?php echo $row['menu_id']; ?> </td>
-							<td><?php echo $row['price']; ?> </td>
-							<td><?php echo $row['description']; ?> </td>
-						</tr>
-					</tbody>
-					<?php
-				}
 				?>
-			</table>
+				<table class="table table-bordered table-hover">
+					<thread>
+						<tr>
+							<th>메뉴이름</th>
+							<th>가    격</th>
+							<th>부가설명</th>
+						</tr>
+					</thread>
+
+					<tbody>
+						<?php
+
+						while($row = $result->fetch_array(MYSQLI_ASSOC)){
+
+							?>
+							<tr>
+								<td><?php echo $row['menu_id']; ?> </td>
+								<td><?php echo $row['price']; ?> </td>
+								<td><?php echo $row['description']; ?> </td>
+							</tr>
+						</tbody>
+						<?php
+					}
+					?>
+				</table>
+			</div>
 		</div>
+	</main>
 
-		</main>
-
-		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-		<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-		<script src="../../assets/js/vendor/popper.min.js"></script>
-		<script src="../../dist/js/bootstrap.min.js"></script>
-		<script src="../../assets/js/vendor/holder.min.js"></script>
-	</body>
-	</html>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+	<script src="../../assets/js/vendor/popper.min.js"></script>
+	<script src="../../dist/js/bootstrap.min.js"></script>
+	<script src="../../assets/js/vendor/holder.min.js"></script>
+</body>
+</html>

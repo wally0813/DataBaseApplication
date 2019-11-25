@@ -51,8 +51,8 @@ include "config.php";
 		body{
 			font-family: "Nanum Gothic";
 			background-image: url(./images/theater.png);
-			min_height:2000px;
-			background-size: inherit ;
+			min_height:1000px;
+			background-size: cover;
 			background-color: #000000; 
 			background-repeat: no-repeat;
 			background-position: top;
