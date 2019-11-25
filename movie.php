@@ -28,6 +28,7 @@ if(!isset($_GET['idx'])){
 
 	?>
 
+
 	<div id="learning-automated-div" style="text-align: center; font-size: 48px; line-height: 52px; padding: 200px 5px 200px 5px;">
 
 		<span style="color:#FFFFFF;">
@@ -79,11 +80,11 @@ if(!isset($_GET['idx'])){
 
 							<?php 
 
-							$query = "SELECT AVG(movie_rating), age, gender FROM movie_review WHERE movie_idx='$idx' GROUP BY movie_idx";
+							$query = "SELECT movie_rating, age, gender FROM movie_review WHERE movie_idx='$idx' GROUP BY movie_idx";
 							$result = $conn->query($query);
 							$row2 = $result->fetch_array(MYSQLI_ASSOC);
 
-							echo "<h4>☆☆ 평점 : " . $row2['AVG(movie_rating)']." ☆☆</h4>"; ?> 
+							echo "<h4>☆☆ 평점 : " . $row2['movie_rating']." ☆☆</h4>"; ?> 
 						</div>
 						<div>
 							<h4>
@@ -154,12 +155,24 @@ while($row = $result->fetch_array(MYSQLI_ASSOC)){
 			</td>
 		</tr>
 	</table> 
-</br>
 <?php 
 
 }
 
 ?>
+<?php 
+		$query = "SELECT AVG(movie_rating) FROM user_review WHERE movie_idx='$idx' GROUP BY movie_idx";
+		$result = $conn->query($query);
+		$row2 = $result->fetch_array(MYSQLI_ASSOC);
+		echo "사용자 평균 평점은 "?><b><?php echo $row2['AVG(movie_rating)']?></b><?php echo "점 입니다.";?><br>
+		<?php
+		$query = "SELECT ifnull(COUNT(user_id),0) FROM user_review WHERE movie_idx='$idx' GROUP BY movie_idx";
+		$result = $conn->query($query);
+		$row3 = $result->fetch_array(MYSQLI_ASSOC);
+		echo "총 ".$row3['ifnull(COUNT(user_id),0)']."명의 사용자가 후기를 남겼습니다.\n";
+		
+	
+	?><br>
 
 </br>
 <h1> MOVIE SCREEN INFO </h1>
