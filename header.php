@@ -100,7 +100,7 @@ include "config.php";
 
 	<?php
 
-	if(!isset($_SESSION['user_id'])){
+	if(!isset($_SESSION['user_id']) and !isset($_SESSION['admin_id'])){
 		?>
 
 		<div style="text-align:center; margin-top:-20px; margin-bottom:10px; padding-left:150px; padding-bottom:30px;font-family: 'Song Myung', 'sans-serif';" >
@@ -121,7 +121,16 @@ include "config.php";
 		<div style="text-align:center; margin-top:-20px; margin-bottom:-10px; padding-left:150px; padding-bottom:30px; font-family: 'Song Myung', 'sans-serif';" >
 			
 			<div style="float:right; margin-right:-10px">
-				<button type="button" class="btn btn-dark"><a href="./mypage.php" style="color: white" role="button">mypage</a></button>
+				<?php 
+
+				if(isset($_SESSION['admin_id'])){
+					?>
+					<button type="button" class="btn btn-dark"><a href="./admin.php" style="color: white" role="button">mypage</a></button>
+					<?php
+				}else{
+					?>
+					<button type="button" class="btn btn-dark"><a href="./mypage.php" style="color: white" role="button">mypage</a></button>
+				<?php } ?>
 				<button type="button" class="btn btn-dark"><a href="./logout.php" style="color: white" role="button">logout</a></button>
 			</div>
 		</div>
