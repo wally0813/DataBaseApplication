@@ -13,7 +13,7 @@ include "config.php";
 	<meta name="description" content="">
 	<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 	<meta name="generator" content="Jekyll v3.8.5">
-	<title>Index</title>
+	<title>MOVIE</title>
 
 	<link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/carousel/">
 
@@ -49,6 +49,7 @@ include "config.php";
 		}
 
 		body{
+			font-family: "Nanum Gothic";
 			background-image: url(./images/theater.png);
 			min_height:2000px;
 			background-size: inherit ;
@@ -66,6 +67,7 @@ include "config.php";
 		}
 
 		.container {
+			font-family: "Nanum Gothic";
 			padding-right: 15px;
 			padding-left: 15px;
 			margin-right: auto;
