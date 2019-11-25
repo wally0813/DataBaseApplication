@@ -28,7 +28,6 @@ if(!isset($_GET['idx'])){
 
 	?>
 
-
 	<div id="learning-automated-div" style="text-align: center; font-size: 48px; line-height: 52px; padding: 200px 5px 200px 5px;">
 
 		<span style="color:#FFFFFF;">
