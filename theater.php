@@ -92,9 +92,9 @@ include "header.php";
 		<?php } ?>
 		<div class="album py-5 bg-light">
 			<div class="container">
-				<h2 style="text-align: center; margin-bottom: 30px;"> 
-					현재 상영중인 영화 
-				</h2>
+				<h1 style="text-align: center; margin-bottom: 30px;"> 
+					SCREEN INFO 
+				</h1>
 
 				<?php
 
@@ -103,7 +103,7 @@ include "header.php";
 				$i = 0;
 				while($row = $result->fetch_array(MYSQLI_ASSOC)){
 					if ( $i % 3 == 0 ){
-						?> <div class="row" style="padding-left: 200px;"> <?php 
+						?> <div class="row"> <?php 
 					}else{
 						?> <?php  
 					}
@@ -112,7 +112,7 @@ include "header.php";
 
 
 					?>
-					<div class="col-3">
+					<div class="col-4">
 						<div class="card mb-3 box-shadow">
 							<img class="card-img-top" src="<?php echo './posters/'.$row['filename'];?>" alt="Card image cap">
 							<div class="card-body">
@@ -121,11 +121,11 @@ include "header.php";
 										<?php echo $row['movie_title']; ?>
 									</b>
 								</p>
-								<div class="d-flex justify-content-between align-items-center" >
-									<button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='movie.php?idx=<?php echo $row['movie_idx'] ?>'" style="margin-left:68px;">
+								
+									<button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='movie.php?idx=<?php echo $row['movie_idx'] ?>'">
 										자세히
 									</button>
-								</div>
+								
 							</div>
 						</div>
 					</div>
