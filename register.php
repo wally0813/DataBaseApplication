@@ -249,9 +249,9 @@ if (!empty($_POST['user_id'])){
 	<input type="text" class="form-control" name="email">
 </div>
 </br>
-<button class="btn btn-success btn-lg btn-block" type="submit" value="register">회원가입</button>
-<button class="btn btn-success btn-lg btn-block" type="reset" value="cancel">다시 작성하기</button>
-<a class="btn btn-success btn-lg btn-block" href="login.php">로그인 화면으로 돌아가기</a>
+<button class="btn btn-outline-dark btn-lg btn-block" type="submit" value="register">회원가입</button>
+<button class="btn btn-outline-dark btn-lg btn-block" type="reset" value="cancel">다시 작성하기</button>
+<a class="btn btn-outline-dark btn-lg btn-block" style="color:black" href="login.php">로그인 화면으로 돌아가기</a>
 </form>
 </div>
 </div>
