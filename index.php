@@ -13,7 +13,7 @@ include "header.php";
           <div id="learning-automated-div" style="text-align: center; font-size: 48px;
           line-height: 52px; padding-left: 800px; padding-top: 300px;">
           <?php
-          $query_info = "SELECT movie_idx, movie_title FROM user_review WHERE movie_rating = (SELECT MAX(movie_rating) FROM user_review);";
+          $query_info = "SELECT movie_idx, movie_title FROM user_review GROUP BY movie_idx ORDER BY AVG(movie_rating) DESC;";
           $result = $conn->query($query_info);
           $row = $result->fetch_array(MYSQLI_ASSOC); 
           ?>
