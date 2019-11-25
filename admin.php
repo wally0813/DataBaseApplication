@@ -163,74 +163,75 @@ include "header.php"
                   <?php
                }else{
 
+                  ?>
+                  <div class="album py-5 bg-light">
+                     <div class="container" style="text-align:center; padding-top:50px; padding-bottom:200px;">
+                        <?php
 
-                  if (!empty($_POST['user_id'])){
+                        if (!empty($_POST['user_id'])){
 
-                     $id = $_POST['user_id'];
-                     $pw = $_POST['user_pw'];
+                           $id = $_POST['user_id'];
+                           $pw = $_POST['user_pw'];
 
-                     $query_id = "SELECT * FROM admin_info WHERE admin_id='$id'";
+                           $query_id = "SELECT * FROM admin_info WHERE admin_id='$id'";
 
-                     $result = $conn->query($query_id);
+                           $result = $conn->query($query_id);
 
-                     if( $result ){
-                        $row = $result->fetch_array(MYSQLI_ASSOC);
-                        if( $row['admin_pw'] == $pw ){
+                           if( $result ){
+                              $row = $result->fetch_array(MYSQLI_ASSOC);
+                              if( $row['admin_pw'] == $pw ){
 
-                           $_SESSION['admin_id'] = $id;
+                                 $_SESSION['admin_id'] = $id;
 
-                           ?>
-                           <script>alert("login success");</script>
-                           <?php
-                           header("Location: admin.php");
+                                 ?>
+                                 <script>alert("login success");</script>
+                                 <?php
+                                 header("Location: admin.php");
 
-                        }else{
-                           ?>
-                           <div style="text-align:center; padding-top: 100px"><?php
-                           echo "password is invalid</br>please try again";?>
-                           <div style='padding-top: 10px; text-align: center;'>
-                              <button><a class="btn btn-secondary" href="./admin.php" role="button">back to login</a></button></div></div>
-                              <?php
+                              }else{
+                                 ?>
+                                 <div style="text-align:center; padding-top: 100px"><?php
+                                 echo "password is invalid</br>please try again";?>
+                                 <div style='padding-top: 10px; text-align: center;'>
+                                    <button><a class="btn btn-secondary" href="./admin.php" role="button">back to login</a></button></div></div>
+                                    <?php
+                                 }
+                              }else{
+                                 ?>
+                                 <div style="text-align:center; padding-top: 100px"><?php
+                                 echo "id is invalid</br>please try again";?>
+                                 <div style='padding-top: 10px; text-align: center;'>
+                                    <button><a class="btn btn-secondary" href="./admin.php" role="button">back to login</a></button></div>
+                                    <?php
+
+                                 }
+
+                              }else{
+
+
+                                 ?>
+
+                                 <form class="form-signin" name="user_login" method="post" action="./admin.php" style="text-align: center; height:100px; width:300px; ">
+                                    <h1 >Please sign in</h1>
+                                    <label for="inputEmail" class="sr-only">user id</label>
+                                    <input type="text" name="user_id", class="form-control" placeholder="user id" required autofocus>
+                                    <label for="inputPassword" class="sr-only">password</label>
+                                    <input type="password" name="user_pw" class="form-control" placeholder="password" required>
+                                    <button class="btn btn-lg btn-sm btn-outline-secondary" type="submit" value="login">Sign in</button>
+                                    <a type="button" class="btn btn-lg btn-sm btn-outline-secondary" href="login.php">Sign in as user</a>
+                                 </form>
+
+
+                                 <?php
+
+                              }
                            }
-                        }else{
-                           ?>
-                           <div style="text-align:center; padding-top: 100px"><?php
-                           echo "id is invalid</br>please try again";?>
-                           <div style='padding-top: 10px; text-align: center;'>
-                              <button><a class="btn btn-secondary" href="./admin.php" role="button">back to login</a></button></div>
-                              <?php
-
-                           }
-
-                        }else{
-
 
                            ?>
 
-                           <body class="text-center">
-                              <form class="form-signin" name="user_login" method="post" action="./admin.php">
-                                 <img class="mb-4" src="./images/ewha.svg" alt="" width="216" height="216">
-                                 <h1 class="h3 mb-3 font-weight-normal">ADMIN PAGE</h1>
-                                 <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-                                 <label for="inputEmail" class="sr-only">user id</label>
-                                 <input type="text" name="user_id", class="form-control" placeholder="user id" required autofocus>
-                                 <label for="inputPassword" class="sr-only">password</label>
-                                 <input type="password" name="user_pw" class="form-control" placeholder="password" required>
-                                 <button class="btn btn-lg btn-primary btn-block" type="submit" value="login">Sign in</button>
-                                 <a type="button" class="btn btn-lg btn-primary btn-block" href="login.php">Sign in as user</a>
-                              </form>
-
-
-                              <?php
-
-                           }
-                        }
-
-                        ?>
-
+                        </div>
                      </div>
-                  </div>
 
 
-               </body>
-               </html>
+                  </body>
+                  </html>
