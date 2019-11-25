@@ -105,7 +105,7 @@ if(!isset($_GET['idx'])){
 						<h4>
 							RATING
 						</h4>
-						<input class="form-control" placeholder="Text input" type="text" name="movie_rating">
+						<input class="form-control" placeholder="Score" type="text" name="movie_rating">
 
 
 					</div>
@@ -146,12 +146,12 @@ while($row = $result->fetch_array(MYSQLI_ASSOC)){
 		</tr>
 		<tr style="">
 			<td width=80 style='text-align:center'> 
-				<?php echo "MY RATING</td><td>" . $row['movie_rating']; ?> 
+				<?php echo "RATING</td><td>" . $row['movie_rating']; ?> 
 			</td> 
 		</tr>
 		<tr style="">
 			<td width=80 style='text-align:center'> 
-				<?php echo "MY REVIEW</td><td>" . $row['movie_review']; ?>
+				<?php echo "REVIEW</td><td>" . $row['movie_review']; ?>
 			</td>
 		</tr>
 	</table> 
