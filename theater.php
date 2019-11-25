@@ -148,7 +148,7 @@ include "header.php";
 		<h1 style="text-align: center; margin-top: 100px; margin-bottom: 50px;">
 			STORE 
 		</h1>
-		<div class="table-responsive" style="font-size:17px; padding-left: 100px; padding-right: 100px;" >
+		<div style="font-size:17px; padding-left: 100px; padding-right: 100px;" >
 			<?php
 
 			$query_info = "SELECT * FROM menu_info WHERE theater_idx='$idx' ORDER BY price DESC";
@@ -156,7 +156,7 @@ include "header.php";
 			$result = $conn->query($query_info);
 
 			?>
-			<table class="table table-striped tabl-sm">
+			<table class="table table-bordered table-hover">
 				<thread>
 					<tr>
 						<th>메뉴이름</th>
