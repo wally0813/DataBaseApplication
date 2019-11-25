@@ -128,7 +128,7 @@ if(!isset($_GET['idx'])){
 		</form>
 
 	</br></br>
-	<h1> User Review </h1>
+	<h1> USER REVIEW </h1>
 </br>
 <?php
 
