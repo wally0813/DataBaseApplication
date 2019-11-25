@@ -118,7 +118,7 @@ include "header.php"
       <h1> 비상영 영화 </h1>
       <?php
 
-      $query_info = "SELECT * FROM movie_info as m LEFT OUTER JOIN screen_info as s ON m.movie_idx=s.movie_idx LEFT OUTER JOIN admin_info as a ON a.theater_idx = s.theater_idx WHERE a.admin_id!='$id'";
+      $query_info = "SELECT * FROM movie_info WHERE movie_idx NOT IN (SELECT movie_idx FROM screen_info as s LEFT OUTER JOIN admin_info as a ON a.theater_idx = s.theater_idx WHERE a.admin_id='$id')";
 
       $result = $conn->query($query_info);
 
@@ -211,27 +211,33 @@ include "header.php"
 
                                  ?>
 
-                                 <form class="form-signin" name="user_login" method="post" action="./admin.php" style="text-align: center; height:100px; width:300px; ">
-                                    <h1 >Please sign in</h1>
-                                    <label for="inputEmail" class="sr-only">user id</label>
-                                    <input type="text" name="user_id", class="form-control" placeholder="user id" required autofocus>
-                                    <label for="inputPassword" class="sr-only">password</label>
-                                    <input type="password" name="user_pw" class="form-control" placeholder="password" required>
-                                    <button class="btn btn-lg btn-sm btn-outline-secondary" type="submit" value="login">Sign in</button>
-                                    <a type="button" class="btn btn-lg btn-sm btn-outline-secondary" href="login.php">Sign in as user</a>
-                                 </form>
+                                 <main role="main">
+                                    <div class="album py-5 bg-light">
+                                       <div class="container" style="text-align:center; padding-top:50px; padding-bottom:200px;">
+                                          <form class="form-signin" style="padding-left:200px; padding-right:200px;" name="user_login" method="post" action="./admin.php">
+                                             <img class="mb-4" src="./images/ewha.svg" alt="" width="216" height="216">
+                                             <h1>Please sign in</h1> </br>
+
+                                             <input style="padding-bottom: 10px; font-size:17px; height:40px" type="text" name="user_id", class="form-control" placeholder="user id" required autofocus>
+
+                                             <input style="padding-bottom: 10px; font-size:17px; height:40px" type="password" name="user_pw" class="form-control" placeholder="password" required>
+
+                                          </br>
+                                             <button class="btn btn-lg btn-outline-secondary"  type="submit" value="login">Sign in</button>
+                                             <a class="btn btn-lg btn-outline-secondary" href="login.php">Sign in as user</a>
+                                          </form>
 
 
-                                 <?php
+                                          <?php
 
-                              }
-                           }
+                                       }
+                                    }
 
-                           ?>
+                                    ?>
 
-                        </div>
-                     </div>
+                                 </div>
+                              </div>
 
 
-                  </body>
-                  </html>
+                           </body>
+                           </html>
